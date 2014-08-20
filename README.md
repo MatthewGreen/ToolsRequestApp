@@ -1,35 +1,72 @@
-# Simple Webserver Using Node.js, Express and JADE
+# Webserver Using Node.js, Express and JADE
 
-This application is a simple node.js web server that employs all CRUD operations as well as serves pages using JADE as the view engine.
+This application is a simple node.js web server that builds off the the External API project with a similar name. The application follows the logical flow and process of a field engineer who needs tools for a job. The process, serialized steps are outlined below.
 
-## Routing Non-API Pages
-All pages with the route of /, for example /index or /helloworld are handled with their own get requests in the following section of the application:
+## The Flow
+The application has the following features and flow:
 
-    // ========================================= SERVING WEB PAGES ============================================
-    // GET hello world page
-    router.get('/helloworld', function(req, res) {
-      console.log('Hello World Page Has Been Served.');
-      res.render('helloworld', { title: 'Hello World!' });
-    });
+1. Add a Master Tool
+2. Add a Tool to the Inventory
+3. Add a Request for a tool from a field engineer
+4. Add a Tool Request/Manage Tool Requests by a tool manager
+5. Approval of Requests
+6. Confirmation of Tool receipt and return of tools
+
+## Routes
+
+Typical to a Node.js application using Express, this application uses routes to serve pages in an orderly fashion which allows actions to happen as pages are served and redirected. The list of all routes (which match the features) are found below:
+
+    app.use('/', routes);
     
-    // ========================================= END SERVING WEB PAGES =========================================
+    // Set of calls to manage Master Tools
+    app.get('/addMasterTool', addMasterTool);
+    app.get('/listMasterTool', listMasterTool);
+    app.post('/createMasterTool', createMasterTool);
+    app.post('/updateMasterTool', updateMasterTool);
+    app.post('/deleteMasterTool', deleteMasterTool);
+    
+    // Set of calls to manage inventory
+    app.get('/addInventory', addInventory);
+    app.post('/createInventory', createInventory);
+    app.get('/listInventory', listInventory);
+    app.post('/deleteInventory', deleteInventory);
+    app.post('/updateInventory', updateInventory);
+    
+    // Set of calls to request management
+    app.get('/addRequest', addRequest);
+    app.post('/createRequest', createRequest);
+    app.get('/listRequest', listRequest);
+    app.post('/deleteRequest', deleteRequest);
+    app.post('/updateRequest', updateRequest);
+    
+    app.get('/addToolRequest', addToolRequest);
+    app.post('/createToolRequest', createToolRequest);
+    app.post('/updateToolRequest', updateToolRequest);
+    
+    app.get('/approveRequest', approveRequest);
+    app.post('/approveTools', approveTools);
+    
+    app.get('/receivedTools', receivedTools);
+    app.post('/updateReceivedTools', updateReceivedTools);
+    
+    // Set of calls for the reports
+    app.get('/damageReport', damageReport);
 
-At present the POSTing and GETting of tools are not supported in the view engine but will be very soon.
+The routes defined above match the functionality but it should be noted that only the **GET** requests will serve pages that the user can access and understand. **POST** requests are merely used to move form entries to the models/ engine which leverages Mongoose to create MongoDB documents and write them to the database.
 
-## Routing API Pages
-The API as mentioned is fully developed and connected to a MongoDB database called which is being used to store "tools" objects.
+## Reports
 
-The application supports:
+Currently the route:
 
-- GET
-- POST
-- UPDATE
-- DELETE
+    /damageReport
 
-The route of the API is /api/tools which triggers a full GET for the database, that is - returning all the objects in the document store.
+Is the only report and it shows a list of all poor or broken tools.
 
-## Things To Do
+## To-Do
 
-1.  Define the correct variables for the Tools object.
-2.  Connect the front end to the backend of the application.
-3.  Buildout user stories.
+There is much left to be done with the application but in order of priority:
+
+1. Style the application.
+2. Make it responsive.
+3. Add more reports.
+4. Improve the flow.

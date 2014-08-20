@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 Damaged Tools
+    table.table
+        
+            thead
+                th Tool
+                th Description
+                th Serial Number
+                th Status
+                th Install Date
+            tbody
+            each item in list
+                tr
+                    td #{item._TIMaster.MTName}
+                    td #{item._TIMaster.MTDescription}
+                    td #{item._TISerialNumber}
+                    td #{item.TIStatus}
+                    td #{item.TIInstallDate}
+                   

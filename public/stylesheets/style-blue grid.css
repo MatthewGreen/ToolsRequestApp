@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.bluegrid {
+		  padding: 20px;
+		  background-color: rgb(135,203,245);
+		  border: 1px solid rgb(115,115,115);
+		  text-align: center; 
+		  font-weight: bold;
+}

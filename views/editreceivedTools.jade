@@ -1,0 +1,45 @@
+extends layout
+
+block content 
+	h1 Recieved Tools
+	table.table
+		thead
+			th Client
+			th Location
+			th Date of Request
+			th Field Engineer Mangager
+			th Field Engineer
+			th Severity
+		tbody
+			tr
+				td #{request.RClient}
+				td #{request.RLocation}
+				td #{request.RDate}
+				td #{request.RFFEM}
+				td #{request.RFE}
+				td #{request.RSeverity}
+	form(name='toolsReceived' action='/updateReceivedTools' method='POST' role='form')
+		each item in request.ToolRequest
+			if (item.Status == 'Not Approved')
+
+			else
+				if (item._ToolInventory == null)
+					h3 #{item._masterTool.MTName}
+				else	
+					h3 #{item._masterTool.MTName} - #{item._ToolInventory._TISerialNumber}
+					input(type='hidden' name='serial#{item._id}' value='#{item._ToolInventory._TISerialNumber}')
+				div.form-group
+					label Shipping
+					select(class='form-control' name='shipping#{item._id}')
+						option(value='shipping') Not Received
+						option(value='recieved') Received
+						option(value='returned') Returned
+				div.form-group
+					label Condition
+					select(class='form-control' name='condition#{item._id}')
+						option(value='New') New
+						option(value='Good') Good
+						option(value='Fair') Fair
+						option(value='Poor') Poor
+						option(Value='Broken') Broken
+		button(class='btn btn-default' name='id' value='#{request._id}' type='submit') submit

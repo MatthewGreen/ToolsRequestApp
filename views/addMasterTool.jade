@@ -1,19 +1,92 @@
 extends layout
 
 block content
-  h2 MasterTool
-  form(name='addMasterTool', action='/createMasterTool', method='POST', role='form')
-    div.form-group
-      label Tool Name
-      input(class='form-control', name='MTName', type='text')
-    div.form-group  
-      label Description
-      input(class='form-control', name='MTDescription', type='text')
-    div.form-group
-      label Price
-      input(class='form-control', name='MTPrice', type='number')
-    div.form-group  
-      label Weight
-      input(class='form-control', name='MTWeight', type='number')
-    div.form-group  
-      input(class='btn', type='submit', value='Submit')
+
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') MAID
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/') Home
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Engineer
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listMasterTool') List Tools
+                    li
+                      a(href='/addMasterTool') Add Tools
+                    li
+                      a(href='#') Something else here
+                    li.divider
+                    li
+                      a(href='#') Separated link
+                    li.divider
+                    li
+                      a(href='#') One more separated link
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Manager
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listMasterTool') List Tools
+                    li
+                      a(href='/addMasterTool') Add Tools
+                    li
+                      a(href='#') Something else here
+                    li.divider
+                    li
+                      a(href='#') Separated link
+                    li.divider
+                    li
+                      a(href='#') One more separated link
+
+             
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+
+    h1= title
+    p 
+
+            
+                doctype html
+                html
+
+                  <div class="container theme-showcase" role="main">
+                  <div class="jumbotron">
+                  head
+                    title Test
+
+                  body
+
+                    form(name='addMasterTool', action='/createMasterTool', method='POST', role='form')
+                      div.form-group
+                        label Tool Name
+                        input(class='form-control', name='MTName', type='text')
+                      div.form-group  
+                        label Description
+                        input(class='form-control', name='MTDescription', type='text')
+                      div.form-group
+                        label Price
+                        input(class='form-control', name='MTPrice', type='number')
+                      div.form-group  
+                        label Weight
+                        input(class='form-control', name='MTWeight', type='number')
+                      div.form-group  
+                        input.btn.btn-primary.btn-lg(class='btn', type='submit', value='Submit')

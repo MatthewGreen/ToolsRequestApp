@@ -19,29 +19,29 @@ Typical to a Node.js application using Express, this application uses routes to 
     app.use('/', routes);
     
     // Set of calls to manage Master Tools
-    app.get('/addMasterTool', addMasterTool);
-    app.get('/listMasterTool', listMasterTool);
-    app.post('/createMasterTool', createMasterTool);
-    app.post('/updateMasterTool', updateMasterTool);
-    app.post('/deleteMasterTool', deleteMasterTool);
+    app.get('/addMasterTool', addMasterTool); - Region Admin
+    app.get('/listMasterTool', listMasterTool); - Region Admin
+    app.post('/createMasterTool', createMasterTool); - Region Admin
+    app.post('/updateMasterTool', updateMasterTool); - Region Admin
+    app.post('/deleteMasterTool', deleteMasterTool); - Region Admin
     
     // Set of calls to manage inventory
-    app.get('/addInventory', addInventory);
-    app.post('/createInventory', createInventory);
-    app.get('/listInventory', listInventory);
-    app.post('/deleteInventory', deleteInventory);
-    app.post('/updateInventory', updateInventory);
+    app.get('/addInventory', addInventory); - Region Admin
+    app.post('/createInventory', createInventory); - Region Admin
+    app.get('/listInventory', listInventory); - Region Admin
+    app.post('/deleteInventory', deleteInventory); - Region Admin
+    app.post('/updateInventory', updateInventory); - Region Admin
     
     // Set of calls to request management
-    app.get('/addRequest', addRequest);
-    app.post('/createRequest', createRequest);
-    app.get('/listRequest', listRequest);
-    app.post('/deleteRequest', deleteRequest);
-    app.post('/updateRequest', updateRequest);
+    app.get('/addRequest', addRequest); - FE
+    app.post('/createRequest', createRequest); - FE
+    app.get('/listRequest', listRequest); - FE
+    app.post('/deleteRequest', deleteRequest); - FE
+    app.post('/updateRequest', updateRequest); - FE
     
-    app.get('/addToolRequest', addToolRequest);
-    app.post('/createToolRequest', createToolRequest);
-    app.post('/updateToolRequest', updateToolRequest);
+    app.get('/addToolRequest', addToolRequest); - Region Admin
+    app.post('/createToolRequest', createToolRequest); - Region Admin
+    app.post('/updateToolRequest', updateToolRequest); - Region Admin
     
     app.get('/approveRequest', approveRequest);
     app.post('/approveTools', approveTools);
@@ -51,6 +51,7 @@ Typical to a Node.js application using Express, this application uses routes to 
     
     // Set of calls for the reports
     app.get('/damageReport', damageReport);
+    app.get('/maintReport', maintReport);
 
 The routes defined above match the functionality but it should be noted that only the **GET** requests will serve pages that the user can access and understand. **POST** requests are merely used to move form entries to the models/ engine which leverages Mongoose to create MongoDB documents and write them to the database.
 

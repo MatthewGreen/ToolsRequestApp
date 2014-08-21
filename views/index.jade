@@ -1,5 +1,43 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  body
+   
+   section#services.services.bg-primary
+    .container
+        .row.text-center
+          .col-lg-10.col-lg-offset-1
+            h3 MAID
+            hr.small
+            .row
+              .col-xs-6
+                  img.btn(src="images/wrench2.png")
+                  span.fa-stack.fa-4x
+                  h4
+                    br
+                    strong Engineer Portal
+                  p Essentials
+                   p View Tools and Inventory
+                   p Add Tools and Inventory
+                  a.btn.btn-default.btn-lg(href='/engineerIndex') Portal
+              .col-xs-6
+                  img.btn(src="images/gear.png")
+                  span.fa-stack.fa-4x
+                  h4
+                    strong Manager Portal
+                  p Essentials
+                   p Tool Requests
+                   p Tool Reports
+                  a.btn.btn-default.btn-lg(href='/managerIndex') Portal
+              
+                  br 
+                  br
+                  br
+                  br
+                  br
+                  br
+                  br
+                  br 
+                  br
+                  br

@@ -38,6 +38,10 @@ var receivedTools = require('./routes/receivedTools');
 var listInventoryAPI = require('./routes/api/tools');
 var listRequestsAPI = require('./routes/api/requests');
 
+// Homepage Bouncer
+var engineerIndex = require('./routes/engineerIndex');
+var managerIndex = require('./routes/managerIndex');
+
 // Routes to database operations in response to form inputs 
 var createMasterTool = require('./model/createMasterTool');
 var createInventory = require('./model/createInventory');
@@ -92,6 +96,10 @@ app.use('/index', routes);
 //API
 app.use('/api/tools', listInventoryAPI);
 app.use('/api/requests', listRequestsAPI);
+
+// Homepage Redirection
+app.get('/engineerIndex', engineerIndex);
+app.get('/managerIndex', managerIndex);
 
 // Set of calls to manage Master Tools
 app.get('/addMasterTool', addMasterTool);

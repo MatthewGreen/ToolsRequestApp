@@ -1,50 +1,133 @@
 extends layout
 
-block content  
-	h1 Request List
-	table.table
-		each item in requestList
-			thead
-				th ID
-				th Request Date
-				th Client
-				th Location
-				th Field Engineer Manager
-				th Field Engineer
-				th Severity
-				th Edit
-			tbody
-			
-				tr
-					td #{item._id}
-					td #{item.RDate}
-					td #{item.RClient}
-					td #{item.RLocation}
-					td #{item.RFFEM}
-					td #{item.RFE}
-					td #{item.RSeverity}
-					td 
-						a(href="/listRequest?q=reqs&id=#{item._id}") edit	
-					tr
-						thead
-							th Tool Name
-							th Serial Number
-							th Approval Details
-							th Status
-							th Start Date
-							th End Date
-							th Edit
-						tbody
-							each tool in item.ToolRequest
-								tr
-									td #{tool._masterTool.MTName}
-									if (tool._ToolInventory == null)
-										td
-									else
-										td #{tool._ToolInventory._TISerialNumber}
-									td #{tool.Approval}
-									td #{tool.Status}
-									td #{tool.Start}
-									td #{tool.End}
-									td
-										a(href='listRequest?q=#{item._id}&id=#{tool._id}') edit
+block content
+
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') MAID
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/managerIndex') Home
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tools
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listMasterTool') List Tools
+                    li
+                      a(href='/addMasterTool') Add Tools
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Inventory
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listInventory') List Inventory
+                    li
+                      a(href='/addInventory') Add Inventory
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Service Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listRequest') List Service Requests
+                    li
+                      a(href='/addRequest') Add Service Request
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tool Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/approveRequest') Approve Tools Requests
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Reports
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/maintReportManager') Maintenance Reports
+                    li
+                      a(href='/damageReport') Damage Reports
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/gear2.png" href='/engineerIndex')
+
+             
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+    h1= title
+    p 
+
+
+                    doctype html
+                    h1.text-center List Requests
+                    html
+
+                        <div class="container theme-showcase" role="main">
+                        <div class="jumbotron">
+                        head
+                            title Test
+                        body
+
+    table.table
+        each item in requestList
+            thead
+                th ID
+                th Request Date
+                th Client
+                th Location
+                th Field Engineer Manager
+                th Field Engineer
+                th Severity
+                th Edit
+            tbody
+            
+                tr
+                    td #{item._id}
+                    td #{item.RDate}
+                    td #{item.RClient}
+                    td #{item.RLocation}
+                    td #{item.RFFEM}
+                    td #{item.RFE}
+                    td #{item.RSeverity}
+                    td 
+                        a(href="/listRequest?q=reqs&id=#{item._id}") edit   
+                    tr
+                        thead
+                            th Tool Name
+                            th Serial Number
+                            th Approval Details
+                            th Status
+                            th Start Date
+                            th End Date
+                            th Edit
+                        tbody
+                            each tool in item.ToolRequest
+                                tr
+                                    td #{tool._masterTool.MTName}
+                                    if (tool._ToolInventory == null)
+                                        td
+                                    else
+                                        td #{tool._ToolInventory._TISerialNumber}
+                                    td #{tool.Approval}
+                                    td #{tool.Status}
+                                    td #{tool.Start}
+                                    td #{tool.End}
+                                    td
+                                        a.glyphicon-pencil(href='listRequest?q=#{item._id}&id=#{tool._id}' class="btn btn-info")

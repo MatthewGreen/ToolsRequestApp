@@ -1,7 +1,53 @@
 extends layout
 
 block content
-    h1 Tools Needing Maintenance
+
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') MAID
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/engineerIndex') Home
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tools
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/addtoolrequest') Add Tool Request
+                    li.divider
+                    li
+                      a(href='/receivedtools') Acknowledge Tools Received 
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Report
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/maintreport') Maintenance Report
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/wrench3.png" href='/engineerIndex')
+                   
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+    h1= title
+    p 
+
+    h1.text-center Tools Needing Maintenance
     table.table
         
             thead

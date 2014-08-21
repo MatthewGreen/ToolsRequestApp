@@ -64,7 +64,17 @@ block content
                       a(href='/damageReport') Damage Reports
               ul.nav.navbar-nav.navbar-right 
                 img.dl-horizontal(src="images/gear2.png" href='/engineerIndex')
-    h1 Tool Inventory List
+
+    h1= title
+    p 
+                doctype html
+                h1.text-center Maintenance Report List
+                html
+                  <div class="container theme-showcase" role="main">
+                  <div class="jumbotron">
+                  head
+                    title Test
+                  body
     table.table
         
             thead
@@ -73,7 +83,10 @@ block content
                 th Serial Number
                 th Status
                 th Install Date
-                th Edit
+                th Tool Location
+                th Last Maint Date
+                th Maint Description
+                th Maint Cycle
             tbody
             each item in list
                 tr
@@ -81,7 +94,9 @@ block content
                     td #{item._TIMaster.MTDescription}
                     td #{item._TISerialNumber}
                     td #{item.TIStatus}
-                    td #{item.TIInstallDate}
-                    td 
-                        a(href="/listInventory?id=#{item._id}") edit
+                    td #{prettyDate(item.TIInstallDate)}
+                    td #{item.ToolLocation}
+                    td #{prettyDate(item.MaintDateLast)}
+                    td #{item.MaintDescription}
+                    td #{item.MaintCycle}
                    

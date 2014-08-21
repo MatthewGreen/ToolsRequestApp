@@ -41,6 +41,7 @@ var listRequestsAPI = require('./routes/api/requests');
 // Homepage Bouncer
 var engineerIndex = require('./routes/engineerIndex');
 var managerIndex = require('./routes/managerIndex');
+var maintReportManager = require('./routes/maintReportManager');
 
 // Routes to database operations in response to form inputs 
 var createMasterTool = require('./model/createMasterTool');
@@ -100,6 +101,7 @@ app.use('/api/requests', listRequestsAPI);
 // Homepage Redirection
 app.get('/engineerIndex', engineerIndex);
 app.get('/managerIndex', managerIndex);
+app.get('/maintReportManager', maintReportManager);
 
 // Set of calls to manage Master Tools
 app.get('/addMasterTool', addMasterTool);

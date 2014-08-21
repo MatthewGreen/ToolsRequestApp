@@ -2,6 +2,12 @@
 
 This application is a simple node.js web server that builds off the the External API project with a similar name. The application follows the logical flow and process of a field engineer who needs tools for a job. The process, serialized steps are outlined below.
 
+## The Stack
+Database - MongoDB (via Mongoose.js)
+Router - Express.js
+Server - Node.js
+Display - JADE
+
 ## The Flow
 The application has the following features and flow:
 
@@ -11,37 +17,52 @@ The application has the following features and flow:
 4. Add a Tool Request/Manage Tool Requests by a tool manager
 5. Approval of Requests
 6. Confirmation of Tool receipt and return of tools
+7. View reports
+
+## Styling
+
+Styling employs Bootstrap 3 making this application fully responsive and mobile ready.
 
 ## Routes
 
 Typical to a Node.js application using Express, this application uses routes to serve pages in an orderly fashion which allows actions to happen as pages are served and redirected. The list of all routes (which match the features) are found below:
 
     app.use('/', routes);
+    app.use('/index', routes);
+    
+    //API
+    app.use('/api/tools', listInventoryAPI);
+    app.use('/api/requests', listRequestsAPI);
+    
+    // Homepage Redirection
+    app.get('/engineerIndex', engineerIndex);
+    app.get('/managerIndex', managerIndex);
+    app.get('/maintReportManager', maintReportManager);
     
     // Set of calls to manage Master Tools
-    app.get('/addMasterTool', addMasterTool); - Region Admin
-    app.get('/listMasterTool', listMasterTool); - Region Admin
-    app.post('/createMasterTool', createMasterTool); - Region Admin
-    app.post('/updateMasterTool', updateMasterTool); - Region Admin
-    app.post('/deleteMasterTool', deleteMasterTool); - Region Admin
+    app.get('/addMasterTool', addMasterTool);
+    app.get('/listMasterTool', listMasterTool);
+    app.post('/createMasterTool', createMasterTool);
+    app.post('/updateMasterTool', updateMasterTool);
+    app.post('/deleteMasterTool', deleteMasterTool);
     
     // Set of calls to manage inventory
-    app.get('/addInventory', addInventory); - Region Admin
-    app.post('/createInventory', createInventory); - Region Admin
-    app.get('/listInventory', listInventory); - Region Admin
-    app.post('/deleteInventory', deleteInventory); - Region Admin
-    app.post('/updateInventory', updateInventory); - Region Admin
+    app.get('/addInventory', addInventory);
+    app.post('/createInventory', createInventory);
+    app.get('/listInventory', listInventory);
+    app.post('/deleteInventory', deleteInventory);
+    app.post('/updateInventory', updateInventory);
     
     // Set of calls to request management
-    app.get('/addRequest', addRequest); - FE
-    app.post('/createRequest', createRequest); - FE
-    app.get('/listRequest', listRequest); - FE
-    app.post('/deleteRequest', deleteRequest); - FE
-    app.post('/updateRequest', updateRequest); - FE
+    app.get('/addRequest', addRequest);
+    app.post('/createRequest', createRequest);
+    app.get('/listRequest', listRequest);
+    app.post('/deleteRequest', deleteRequest);
+    app.post('/updateRequest', updateRequest);
     
-    app.get('/addToolRequest', addToolRequest); - Region Admin
-    app.post('/createToolRequest', createToolRequest); - Region Admin
-    app.post('/updateToolRequest', updateToolRequest); - Region Admin
+    app.get('/addToolRequest', addToolRequest);
+    app.post('/createToolRequest', createToolRequest);
+    app.post('/updateToolRequest', updateToolRequest);
     
     app.get('/approveRequest', approveRequest);
     app.post('/approveTools', approveTools);
@@ -68,7 +89,9 @@ Give a report of all damaged tools and a report of all tools that need maintenan
 
 There is much left to be done with the application but in order of priority:
 
-1. Style the application.
-2. Make it responsive.
-3. Add more reports.
-4. Improve the flow.
+1. Improve the flow.
+2. Add multiple tools per request.
+
+## Contributors
+
+This project was made possible via the contributions of Jeremy Eaton, Vadivel PL, Jeffrey Wollenziehn & Matthew Green.

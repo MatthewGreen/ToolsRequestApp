@@ -1,9 +1,92 @@
 extends layout
 
 block content
+
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') MAID
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/managerIndex') Home
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tools
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listMasterTool') List Tools
+                    li
+                      a(href='/addMasterTool') Add Tools
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Inventory
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listInventory') List Inventory
+                    li
+                      a(href='/addInventory') Add Inventory
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Service Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listRequest') List Service Requests
+                    li
+                      a(href='/addRequest') Add Service Request
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tool Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/approveRequest') Approve Tools Requests
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Reports
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/maintReportManager') Maintenance Reports
+                    li
+                      a(href='/damageReport') Damage Reports
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/gear2.png" href='/engineerIndex')
+
+             
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+    h1= title
+    p 
+
+
+                    doctype html
+                    h1.text-center Edit Inventory
+                    html
+
+                        <div class="container theme-showcase" role="main">
+                        <div class="jumbotron">
+                        head
+                            title Test
+                        body
     for item in list 
         //allows us to get data inside array passed in route.get func
-        h1 Edit #{item._TIMaster.MTName}
+        h3 Edit #{item._TIMaster.MTName}
         form(name='deleteInventory', action='/deleteInventory', method='post')
             button(class='btn btn-default', name='id', type='submit', value='#{item._id}') Delete 
                 //allows hiding of one data value inside button

@@ -75,7 +75,7 @@ block content
                   head
                     title Test
                   body
-        table.table
+        table.table(class="table-striped")
           thead
             th Client
             th Date of Request
@@ -88,7 +88,7 @@ block content
             each request in requests
               tr
                 td #{request.RClient}
-                td #{request.RDate}
+                td #{prettyDate(request.RDate)}
                 td #{request.RLocation}
                 td #{request.RFFEM}
                 td #{request.RFE}

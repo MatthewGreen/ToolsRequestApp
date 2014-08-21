@@ -7,7 +7,7 @@ var MTool = mongoose.model('MasterTool');
 router.get('/maintReport',function (req,res){
 	// var id = req.param('id');
 
-	Inventory.find({'NeedsMaintenance': 'Yes'}).populate('_TIMaster').exec(function (err, lists){
+	Inventory.find({'NeedsMaintenance': true }).populate('_TIMaster').exec(function (err, lists){
 		res.render('maintReport',{list:lists});
 		//console.log('lists test: %s', lists);
 	});

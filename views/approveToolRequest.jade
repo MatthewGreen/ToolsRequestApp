@@ -1,35 +1,118 @@
 extends layout
 
 block content
-	h2 Approve Tools:
-	table.table
-		thead
-			th Client
-			th Date of Request
-			th Location
-			th Field Engineer Manager
-			th Field Engineer
-			th Severity
-		tbody
-			tr
-				td #{request.RClient}
-				td #{request.RDate}
-				td #{request.RLocation}
-				td #{request.RFFEM}
-				td #{request.RFE}
-				td #{request.RSeverity}
 
-	form(name='approveTools' action='/approveTools' method='POST' role='form')
-		input(type='hidden' name='formID' value='#{request._id}')
-		each item in request.ToolRequest
-			h3 #{item._masterTool.MTName}
-			div.form-group
-				label Approve Tool
-				select(class='form-control' name='approval#{item._id}')
-					each inventory in available
-						if (item._masterTool.MTName == inventory._TIMaster.MTName)
-							option(value='#{inventory._id}') #{inventory._TISerialNumber}
-					option(value='purchase') Purchase
-					option(value='rent') Rent 
-					option(value='notApproved') Don't Approve
-		button(class='btn btn-default' type='submit') Submit
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') MAID
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/managerIndex') Home
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tools
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listMasterTool') List Tools
+                    li
+                      a(href='/addMasterTool') Add Tools
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Inventory
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listInventory') List Inventory
+                    li
+                      a(href='/addInventory') Add Inventory
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Service Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listRequest') List Service Requests
+                    li
+                      a(href='/addRequest') Add Service Request
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tool Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/approveRequest') Approve Tools Requests
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Reports
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/maintReportManager') Maintenance Reports
+                    li
+                      a(href='/damageReport') Damage Reports
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/gear2.png" href='/engineerIndex')
+
+             
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+    h1= title
+    p 
+
+
+                    doctype html
+                    h1.text-center Approve Tool Request
+                    html
+
+                        <div class="container theme-showcase" role="main">
+                        <div class="jumbotron">
+                        head
+                            title Test
+                        body
+                            h2 Approve Tools:
+                            table.table(class="table-striped")
+                                thead
+                                    th Client
+                                    th Date of Request
+                                    th Location
+                                    th Field Engineer Manager
+                                    th Field Engineer
+                                    th Severity
+                                tbody
+                                    tr
+                                        td #{request.RClient}
+                                        td #{prettyDate(request.RDate)}
+                                        td #{request.RLocation}
+                                        td #{request.RFFEM}
+                                        td #{request.RFE}
+                                        td #{request.RSeverity}
+
+                            form(name='approveTools' action='/approveTools' method='POST' role='form')
+                                input(type='hidden' name='formID' value='#{request._id}')
+                                each item in request.ToolRequest
+                                    h3 #{item._masterTool.MTName}
+                                    div.form-group
+                                        label Approve Tool
+                                        select(class='form-control' name='approval#{item._id}')
+                                            each inventory in available
+                                                if (item._masterTool.MTName == inventory._TIMaster.MTName)
+                                                    option(value='#{inventory._id}') #{inventory._TISerialNumber}
+                                            option(value='purchase') Purchase
+                                            option(value='rent') Rent 
+                                            option(value='notApproved') Don't Approve
+                                button(class='btn btn-default' type='submit') Submit

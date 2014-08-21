@@ -46,30 +46,33 @@ block content
 
     h1= title
     p 
-                doctype html
-                h3.text-center Add Tool Request
-                html
-                  <div class="container theme-showcase" role="main">
-                  <div class="jumbotron">
-                  head
-                    title Test
-                  body
-                    form(name='toolRequest' action='/createToolRequest' method='POST' role='form')
-                      div.form-group
-                        label Open Requests - Client | Location | FFEM | Severity
-                        select(class='form-control' name='request')
-                          each request in requestList
-                            option(value='#{request._id}') #{request.RClient} | #{request.RLocation} | #{request.RFFEM} | #{request.RSeverity}
-                      div.form-group  
-                        label Tool
-                        select(class='form-control' name='tool')
-                          each tool in toolList
-                            option(value='#{tool._id}') #{tool.MTName}
-                      div.form-group
-                        label Start Date
-                        input(class='form-control' name='start' type='date')
-                      div.form-group  
-                        label End Date
-                        input(class='form-control' name='end' type='date')
-                      div.form-group  
-                        button.btn.btn-primary.btn-lg(class='btn btn-default' type='Submit') Submit
+
+
+                    doctype html
+                    h1.text-center Add Tool Request
+                    html
+
+                        <div class="container theme-showcase" role="main">
+                        <div class="jumbotron">
+                        head
+                            title Test
+                        body
+                        form(name='toolRequest' action='/createToolRequest' method='POST' role='form')
+                          div.form-group
+                            label Open Requests - Client | Location | FFEM | Severity
+                            select(class='form-control' name='request')
+                              each request in requestList
+                                option(value='#{request._id}') #{request.RClient} | #{request.RLocation} | #{request.RFFEM} | #{request.RSeverity}
+                          div.form-group    
+                            label Tool
+                            select(class='form-control' name='tool')
+                              each tool in toolList
+                                option(value='#{tool._id}') #{tool.MTName}
+                          div.form-group
+                            label Start Date
+                            input(class='form-control' name='start' type='date')
+                          div.form-group
+                            label End Date
+                            input(class='form-control' name='end' type='date')
+                          div.form-group
+                            button(class='btn btn-default' type='Submit') Submit

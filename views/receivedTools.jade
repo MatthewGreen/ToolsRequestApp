@@ -18,74 +18,104 @@ block content
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
               ul.nav.navbar-nav
                 li
-                  a(href='/engineerIndex') Home
+                  a(href='/managerIndex') Home
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
                     | Tools
                     span.caret
                   ul.dropdown-menu(role='menu')
                     li
-                      a(href='/addtoolrequest') Add Tool Request
-                    li.divider
+                      a(href='/listMasterTool') List Tools
                     li
-                      a(href='/receivedtools') Acknowledge Tools Received 
+                      a(href='/addMasterTool') Add Tools
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    | Report
+                    | Inventory
                     span.caret
                   ul.dropdown-menu(role='menu')
                     li
-                      a(href='/maintreport') Maintenance Report
+                      a(href='/listInventory') List Inventory
+                    li
+                      a(href='/addInventory') Add Inventory
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Service Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/listRequest') List Service Requests
+                    li
+                      a(href='/addRequest') Add Service Request
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Tool Request
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/approveRequest') Approve Tools Requests
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Reports
+                    span.caret
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/maintReportManager') Maintenance Reports
+                    li
+                      a(href='/damageReport') Damage Reports
               ul.nav.navbar-nav.navbar-right 
-                img.dl-horizontal(src="images/wrench3.png" href='/engineerIndex')
-                   
-            //
-               /.navbar-collapse 
-          //
-             /.container-fluid 
+                img.dl-horizontal(src="images/gear2.png" href='/engineerIndex')
 
+    h1= title
+    p 
+                doctype html
+                h1.text-center Received Tools Form
+                html
+                  <div class="container theme-showcase" role="main">
+                  <div class="jumbotron">
+                  head
+                    title Test
+                  body
 
-    h1.text-center Recieved Tools Form
-    table.table
-          each entry in request
-            thead
-                th Client
-                th Location
-                th Date of Request
-                th Field Engineer Manager
-                th Field Engineer
-                th Severity
-                th Tool(s) Received
-            tbody
-                tr
-                    td #{entry.RClient}
-                    td #{entry.RLocation}
-                    td #{entry.RDate}
-                    td #{entry.RFFEM}
-                    td #{entry.RFE}
-                    td #{entry.RSeverity}
-                    td 
-                        a(href='receivedTools?id=#{entry._id}') Received Tools
-                tr
-                    thead
-                        th Tool
-                        th Serial Number
-                        th Approval Details
-                        th Status
-                        th Date Needed By
-                        th Return Date
-                    tbody
-                        each item in entry.ToolRequest
-                            if (item.Status == 'Not Approved')
+                  table.table(class="table-striped")
+                        each entry in request
+                          thead
+                              th Client
+                              th Location
+                              th Date of Request
+                              th Field Engineer Manager
+                              th Field Engineer
+                              th Severity
+                              th Tool(s) Received
+                          tbody
+                              tr
+                                  td #{entry.RClient}
+                                  td #{entry.RLocation}
+                                  td #{entry.RDate}
+                                  td #{entry.RFFEM}
+                                  td #{entry.RFE}
+                                  td #{entry.RSeverity}
+                                  td 
+                                      a(href='receivedTools?id=#{entry._id}') Received Tools
+                              tr
+                                  thead
+                                      th Tool
+                                      th Serial Number
+                                      th Approval Details
+                                      th Status
+                                      th Date Needed By
+                                      th Return Date
+                                  tbody
+                                      each item in entry.ToolRequest
+                                          if (item.Status == 'Not Approved')
 
-                            else	
-                                tr
-                                    td #{item._masterTool.MTName}
-                                    if (item._ToolInventory == null)
-                                        td 
-                                    else
-                                        td #{item._ToolInventory._TISerialNumber}
-                                    td #{item.Approval}
-                                    td #{item.Status}
-                                    td #{item.Start}
-                                    td #{item.End}
+                                          else  
+                                              tr
+                                                  td #{item._masterTool.MTName}
+                                                  if (item._ToolInventory == null)
+                                                      td 
+                                                  else
+                                                      td #{item._ToolInventory._TISerialNumber}
+                                                  td #{item.Approval}
+                                                  td #{item.Status}
+                                                  td #{item.Start}
+                                                  td #{item.End}

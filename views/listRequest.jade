@@ -85,7 +85,8 @@ block content
                             title Test
                         body
 
-    table.table
+    table.table(class="table-striped")
+      
         each item in requestList
             thead
                 th ID
@@ -100,14 +101,14 @@ block content
             
                 tr
                     td #{item._id}
-                    td #{item.RDate}
+                    td #{prettyDate(item.RDate)}
                     td #{item.RClient}
                     td #{item.RLocation}
                     td #{item.RFFEM}
                     td #{item.RFE}
                     td #{item.RSeverity}
                     td 
-                        a(href="/listRequest?q=reqs&id=#{item._id}") edit   
+                        a.glyphicon-pencil(href="/listRequest?q=reqs&id=#{item._id}" class="btn btn-info")  
                     tr
                         thead
                             th Tool Name
@@ -116,7 +117,7 @@ block content
                             th Status
                             th Start Date
                             th End Date
-                            th Edit
+                            //- th Edit
                         tbody
                             each tool in item.ToolRequest
                                 tr
@@ -129,5 +130,5 @@ block content
                                     td #{tool.Status}
                                     td #{tool.Start}
                                     td #{tool.End}
-                                    td
-                                        a.glyphicon-pencil(href='listRequest?q=#{item._id}&id=#{tool._id}' class="btn btn-info")
+                                    //- td
+                                        //- a.glyphicon-pencil(href='editToolRequest?q=#{item._id}&id=#{tool._id}' class="btn btn-info")

@@ -14,7 +14,15 @@ block content
       input(class='form-control', name='Serial', type='text')
     div.form-group
       label Install Date
-      input(class='form-control', name='Install', type='date')    
+      input(class='form-control', name='Install', type='date') 
+    div.form-group
+      label Tool Location
+      select(class='form-control' name='ToolLocation')
+        option(value='NorthEastUSA') NE USA
+        option(value='SouthEastUSA') SE USA
+        option(value='MidWestUSA') Mid West USA
+        option(value='WesternEurope') Western Europe
+        option(Value='MEA') Middle East, Asia  
     div.form-group
       label Condition
       select(class='form-control' name='Condition')
@@ -23,5 +31,19 @@ block content
         option(value='Fair') Fair
         option(value='Poor') Poor
         option(Value='Broken') Broken
+    div.form-group
+      label Needs Maintenance
+      select(class='form-control' name='NeedsMaintenance')
+        option(value='Yes') Yes
+        option(value='No') No
+    div.form-group
+      label Maintenance Date | History
+      input(class='form-control', name='MaintDateLast', type='date')
+      input(class='form-control', name='MaintDescription', type='text', value='Please enter the last Maintenance Description')
+      label Maintenance Cycle
+      select(class='form-control' name='MaintCycle')
+        option(value='Yearly') Yearly
+        option(value='Quarterly') Quarterly
+        option(value='Monthly') Monthly
     div.form-group  
       input(class='btn', type='submit', value='Submit')

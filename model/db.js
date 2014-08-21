@@ -19,6 +19,11 @@ var ToolInventorySchema = new mongoose.Schema({
 	TIStatus: String,
 	TIInstallDate: Date,
 	Avaliable: Boolean,
+	ToolLocation: String,
+	NeedsMaintenance: Boolean,
+	MaintDateLast: Date,
+	MaintDescription: String,
+	MaintCycle: String,
 	_TIMaster: {
 		type: Number,
 		ref: 'MasterTool'

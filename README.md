@@ -56,11 +56,12 @@ The routes defined above match the functionality but it should be noted that onl
 
 ## Reports
 
-Currently the route:
+Currently the routes:
 
     /damageReport
+    /maintNeeded
 
-Is the only report and it shows a list of all poor or broken tools.
+Give a report of all damaged tools and a report of all tools that need maintenance.
 
 ## To-Do
 

@@ -8,8 +8,13 @@ router.post('/updateInventory', function (req,res){
 	Inventory.update({_id:req.body.id},
 		{$set: {
 			_TISerialNumber: req.body.Serial,
-			TIInstallDate: req.body.Install, 
-			TIStatus: req.body.Condition
+			TIInstallDate: req.body.Install,
+			ToolLocation: req.body.ToolLocation, 
+			TIStatus: req.body.Condition,
+			NeedsMaintenance: req.body.NeedsMaintenance,
+			MaintDateLast: req.body.MaintDateLast,
+			MaintDescription: req.body.MaintDescription,
+			MaintCycle: req.body.MaintCycle
 		}}).exec(); 
     //.exec() runs code after grabbing data
     

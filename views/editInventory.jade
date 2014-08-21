@@ -31,6 +31,15 @@ block content
                     input(class='form-control', name='Install', value='#{item.TIInstallDate.getFullYear()}-#{item.TIInstallDate.getMonth()+1}-#{item.TIInstallDate.getDate()}' type='date')      
             
             div.form-group
+              label Tool Location
+              select(class='form-control' name='ToolLocation', value='#{item.ToolLocation}')
+                option(value='NorthEastUSA') NE USA
+                option(value='SouthEastUSA') SE USA
+                option(value='MidWestUSA') Mid West USA
+                option(value='WesternEurope') Western Europe
+                option(Value='MEA') Middle East, Asia
+
+            div.form-group
               label Condition
               select(class='form-control' name='Condition', value='#{item.TIStatus}')
                 option(value='#{item.TIStatus}') #{item.TIStatus}
@@ -39,5 +48,35 @@ block content
                 option(value='Fair') Fair
                 option(value='Poor') Poor
                 option(Value='Broken') Broken
+
+            div.form-group
+              label Needs Maintenance
+              select(class='form-control' name='NeedsMaintenance', value='#{item.NeedsMaintenance}')
+                option(value='Yes') Yes
+                option(value='No') No
+
+            div.form-group
+              label Maintenance Date | History
+              
+              -var maintMonth = item.MaintDateLast.getMonth() + 1
+              -var maintDay = item.MaintDateLast.getDate()
+              if (maintMonth < 10)
+                if (day < 10)
+                    input(class='form-control', name='MaintDateLast', value='#{item.MaintDateLast.getFullYear()}-0#{item.MaintDateLast.getMonth()+1}-0#{item.MaintDateLast.getDate()}' type='date')
+                else    
+                    input(class='form-control', name='MaintDateLast', value='#{item.MaintDateLast.getFullYear()}-0#{item.MaintDateLast.getMonth()+1}-#{item.MaintDateLast.getDate()}' type='date')
+              else
+                if (maintDay < 10)
+                    input(class='form-control', name='MaintDateLast', value='#{item.MaintDateLast.getFullYear()}-#{item.MaintDateLast.getMonth()+1}-0#{item.MaintDateLast.getDate()}' type='date')
+                else
+                    input(class='form-control', name='MaintDateLast', value='#{item.MaintDateLast.getFullYear()}-#{item.MaintDateLast.getMonth()+1}-#{item.MaintDateLast.getDate()}' type='date')
+
+              input(class='form-control', name='MaintDescription', type='text', value='#{item.MaintDescription}')
+              label Maintenance Cycle
+              select(class='form-control' name='MaintCycle', value='#{item.MaintCycle}')
+                option(value='Yearly') Yearly
+                option(value='Quarterly') Quarterly
+                option(value='Monthly') Monthly
+
             div.form-group
                 button(class='btn btn-default' name='id' type='submit', value='#{item._id}') Submit

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 Tools Needing Maintenance
+    table.table
+        
+            thead
+                th Tool
+                th Description
+                th Serial Number
+                th Status
+                th Install Date
+                th Tool Location
+                th Last Maint Date
+                th Maint Description
+                th Maint Cycle
+            tbody
+            each item in list
+                tr
+                    td #{item._TIMaster.MTName}
+                    td #{item._TIMaster.MTDescription}
+                    td #{item._TISerialNumber}
+                    td #{item.TIStatus}
+                    td #{prettyDate(item.TIInstallDate)}
+                    td #{item.ToolLocation}
+                    td #{prettyDate(item.MaintDateLast)}
+                    td #{item.MaintDescription}
+                    td #{item.MaintCycle}
+                   

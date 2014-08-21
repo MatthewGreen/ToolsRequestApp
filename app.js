@@ -55,6 +55,7 @@ var updateReceivedTools = require('./model/updateReceivedTools');
 
 // Routes To Reports
 var damageReport = require('./routes/damageReport');
+var maintReport = require('./routes/maintReport');
 
 var app = express();
 
@@ -86,6 +87,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
+app.use('/index', routes);
 
 //API
 app.use('/api/tools', listInventoryAPI);
@@ -124,6 +126,7 @@ app.post('/updateReceivedTools', updateReceivedTools);
 
 // Set of calls for the reports
 app.get('/damageReport', damageReport);
+app.get('/maintReport', maintReport);
 
 // Errors section
 /// catch 404 and forward to error handler
@@ -157,5 +160,14 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// Other JS Functions
+app.locals.prettyDate = function(dateString){
+    var date = new Date(dateString);
+    var d = date.getDate();
+    var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    var m = monthNames[date.getMonth()];
+    var y = date.getFullYear();
+    return d+' '+m+' '+y;
+}
 
 module.exports = app;

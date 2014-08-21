@@ -34,6 +34,10 @@ var approveRequest = require('./routes/approveRequest');
 
 var receivedTools = require('./routes/receivedTools');
 
+// External API
+var listInventoryAPI = require('./routes/api/tools');
+var listRequestsAPI = require('./routes/api/requests');
+
 // Routes to database operations in response to form inputs 
 var createMasterTool = require('./model/createMasterTool');
 var createInventory = require('./model/createInventory');
@@ -82,6 +86,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
+
+//API
+app.use('/api/tools', listInventoryAPI);
+app.use('/api/requests', listRequestsAPI);
 
 // Set of calls to manage Master Tools
 app.get('/addMasterTool', addMasterTool);

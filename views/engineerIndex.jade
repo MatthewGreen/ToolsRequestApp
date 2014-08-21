@@ -12,7 +12,7 @@ block content
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-              a.navbar-brand(href='/engineerIndex') MAID
+              a.navbar-brand(href='/') MAID
             //
                Collect the nav links, forms, and other content for toggling 
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
@@ -21,25 +21,23 @@ block content
                   a(href='/engineerIndex') Home
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    | Inventory
-                    span.caret
-                  ul.dropdown-menu(role='menu')
-                    li
-                      a(href='/listMasterTool') List Inventory
-                    li
-                      a(href='/addMasterTool') Add Inventory
-                li.dropdown
-                  a.dropdown-toggle(href='#', data-toggle='dropdown')
                     | Tools
                     span.caret
                   ul.dropdown-menu(role='menu')
                     li
-                      a(href='/listMasterTool') List Tools
+                      a(href='/addtoolrequest') Add Tool Request
+                    li.divider
                     li
-                      a(href='/addMasterTool') Add Tools
-                    li.divider 
+                      a(href='/receivedtools') Acknowledge Tools Received 
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Report
+                    span.caret
+                  ul.dropdown-menu(role='menu')
                     li
-                      a(href='/addMasterTool') Tool Status
+                      a(href='/maintreport') Maintenance Report
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/wrench3.png" href='/engineerIndex')
                    
             //
                /.navbar-collapse 

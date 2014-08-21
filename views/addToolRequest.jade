@@ -18,42 +18,27 @@ block content
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
               ul.nav.navbar-nav
                 li
-                  a(href='/') Home
+                  a(href='/engineerIndex') Home
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    | Engineer
+                    | Tools
                     span.caret
                   ul.dropdown-menu(role='menu')
                     li
-                      a(href='/listMasterTool') List Tools
-                    li
-                      a(href='/addMasterTool') Add Tools
-                    li
-                      a(href='#') Something else here
+                      a(href='/addtoolrequest') Add Tool Request
                     li.divider
                     li
-                      a(href='#') Separated link
-                    li.divider
-                    li
-                      a(href='#') One more separated link
+                      a(href='/receivedtools') Acknowledge Tools Received 
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
-                    | Manager
+                    | Report
                     span.caret
                   ul.dropdown-menu(role='menu')
                     li
-                      a(href='/listMasterTool') List Tools
-                    li
-                      a(href='/addMasterTool') Add Tools
-                    li
-                      a(href='#') Something else here
-                    li.divider
-                    li
-                      a(href='#') Separated link
-                    li.divider
-                    li
-                      a(href='#') One more separated link
-             
+                      a(href='/maintreport') Maintenance Report
+              ul.nav.navbar-nav.navbar-right 
+                img.dl-horizontal(src="images/wrench3.png" href='/engineerIndex')
+                   
             //
                /.navbar-collapse 
           //
@@ -87,4 +72,4 @@ block content
                         label End Date
                         input(class='form-control' name='end' type='date')
                       div.form-group  
-                        button(class='btn btn-default' type='Submit') Submit
+                        button.btn.btn-primary.btn-lg(class='btn btn-default' type='Submit') Submit
